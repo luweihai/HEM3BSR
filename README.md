@@ -37,8 +37,8 @@ pip install torch pandas numpy tqdm
 
 ## Data Preparation
 
-1. Place the KuaiLive dataset in the `data/KuaiLive/` directory.
-2. The dataset should contain CSV files and support the following formats:
+1. Place the [datasets](https://drive.google.com/drive/folders/17mGYdEqW9UiQESB-0EBdmekjFGolwMsn?usp=sharing) in the `data/{datasetname}/` directory.
+2. The dataset should contain CSV files and support the following formats, such as KuaiLive:
    - `comment.csv` - Comment behavior data
    - `like.csv` - Like behavior data  
    - `gift.csv` - Gift behavior data
@@ -47,12 +47,19 @@ pip install torch pandas numpy tqdm
 
 ### 1. Train HEM3BSR Model (with Diffusion Mechanism)
 
+Taobao-dataset
 ```bash
-cd m3bsr_project
 nohup python3 train_hem3bsr.py --
 epochs 100 --batch_size 32 --lr 0.0001   --diffusion_timesteps 100 --data_root ../data/Taobao 
   --text_embeddings_path ../data/Taobao/title_embeddings.npy > train_taobao.log 2>&1 &
 ```
+
+KuaiLive-dataset
+```bash
+nohup python3 train_hem3bsr.py --epochs 100 --batch_size 32 --lr 0.0005   --diffusion_timesteps 100 --data_root ../data/KuaiLive   --text_embeddings_path ../data/KuaiLive/title_embeddings.npy > train_kuailive.log 2>&1 &
+```
+
+
 
 ### 2. Main Parameters Description
 
